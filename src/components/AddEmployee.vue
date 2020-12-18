@@ -6,7 +6,7 @@
             <div class="content-body">
                 <div class="header-body">
                     <div class="title-body">
-                        <div class="icon-back"></div>
+                        <div class="icon-back" @click="backPage()"></div>
                         <div class="title">Thêm mới hồ sơ</div>
                     </div>
                     <div class="btn-header-body">
@@ -17,8 +17,9 @@
                         <MSButton class="btn">Thiết lập ngầm định</MSButton>
                     </div>
                 </div>
-                <div class="content-info style-scollbar">
-                    <div class="info-general">
+                <div class="content-info style-scollbar" style="display: flex;">
+                    <div class="m-flex1">
+                        <div class="info-general">
                         <div class="title-info-general">Thông tin chung</div>
                         <div class="m-row">
                             <div class="m-flex1" style="display: flex; margin-top:24px;">
@@ -36,11 +37,11 @@
                                 <div class="m-flex1 content-info-left">
                                     <div class="m-row">
                                         <div class="m-label m-flex1">Mã nhân viên (<span style="color: red;">*</span>)</div>
-                                        <input type="text"class="m-input m-flex2"></input>
+                                        <input class="m-input m-flex2" type="date">
                                     </div>
                                     <div class="m-row">
                                         <div class="m-label m-flex1">Họ và tên (<span style="color: red;">*</span>)</div>
-                                        <input type="text"class="m-input m-flex2"></input>
+                                        <input class="m-input m-flex2" type="date">
                                     </div>
                                     <div class="m-row">
                                         <div class="m-label m-flex1">Giới tính</div>
@@ -51,11 +52,11 @@
                                     </div>
                                     <div class="m-row">
                                         <div class="m-label m-flex1">Ngày sinh</div>
-                                        <input type="date"class="m-input m-flex2"></input>
+                                        <input type="date" class="m-input m-flex2">
                                     </div>
                                     <div class="m-row">
                                         <div class="m-label m-flex1">MST cá nhân</div>
-                                        <input type="text"class="m-input m-flex2"></input>
+                                        <input class="m-input m-flex2" type="date">
                                     </div>
                                 </div>
                                 <div class="m-flex1" style="margin-left: 24px;">
@@ -101,11 +102,11 @@
                                     <div class="m-row m-flex1" style="font-weight: bold;">Số CMND/Thẻ căn cước</div>
                                     <div class="m-row">
                                         <div class="m-label m-flex1">Số</div>
-                                        <input type="text"class="m-input m-flex2"></input>
+                                        <input class="m-input m-flex2" type="text">
                                     </div>
                                     <div class="m-row">
                                         <div class="m-label m-flex1">Ngày cấp</div>
-                                        <input type="date"class="m-input m-flex2"></input>
+                                        <input type="date" class="m-input m-flex2">
                                     </div>
                                     <div class="m-row">
                                         <div class="m-label m-flex1">Nơi cấp</div>
@@ -116,26 +117,26 @@
                                     </div>
                                     <div class="m-row">
                                         <div class="m-label m-flex1">Ngày hết hạn</div>
-                                        <input type="date"class="m-input m-flex2"></input>
+                                        <input class="m-input m-flex2" type="date">
                                     </div>
                                 </div>
                                 <div class="m-flex1" style="margin-left: 24px;">
                                     <div class="m-row m-flex1" style="font-weight: bold;">Hộ chiếu</div>
                                     <div class="m-row">
                                         <div class="m-label m-flex1">Số</div>
-                                        <input type="text"class="m-input m-flex2"></input>
+                                        <input class="m-input m-flex2" type="date">
                                     </div>
                                     <div class="m-row">
                                         <div class="m-label m-flex1">Ngày cấp</div>
-                                        <input type="date"class="m-input m-flex2"></input>
+                                        <input type="date" class="m-input m-flex2">
                                     </div>
                                     <div class="m-row">
                                         <div class="m-label m-flex1">Nơi cấp</div>
-                                        <input type="text"class="m-input m-flex2"></input>
+                                        <input class="m-input m-flex2" type="date">
                                     </div>
                                     <div class="m-row">
                                         <div class="m-label m-flex1">Ngày hết hạn</div>
-                                        <input type="date"class="m-input m-flex2"></input>
+                                        <input type="date" class="m-input m-flex2">
                                     </div>
                                 </div>
                             </div>
@@ -144,7 +145,7 @@
                                     <div class="m-row m-flex1" style="font-weight: bold;">Trình độ bằng cấp</div>
                                     <div class="m-row">
                                         <div class="m-label m-flex1">Trình độ văn hóa</div>
-                                        <input type="text"class="m-input m-flex2"></input>
+                                        <input class="m-input m-flex2" type="date">
                                     </div>
                                     <div class="m-row">
                                         <div class="m-label m-flex1">Trình độ đào tạo</div>
@@ -176,7 +177,7 @@
                                     </div>
                                     <div class="m-row">
                                         <div class="m-label m-flex1">Năm tốt nghiệp</div>
-                                        <input type="number"class="m-input m-flex2"></input>
+                                        <input type="number" class="m-input m-flex2">
                                     </div>
                                     <div class="m-row">
                                         <div class="m-label m-flex1">Xếp loại</div>
@@ -220,47 +221,47 @@
                                 <div class="m-flex1 content-info-left">
                                     <div class="m-row">
                                         <div class="m-label m-flex1">Điện thoại di động</div>
-                                        <input type="text"class="m-input m-flex2"></input>
+                                        <input class="m-input m-flex2" type="date">
                                     </div>
                                     <div class="m-row">
                                         <div class="m-label m-flex1">Điện thoại cơ quan</div>
-                                        <input type="text"class="m-input m-flex2"></input>
+                                        <input class="m-input m-flex2" type="date">
                                     </div>
                                     <div class="m-row">
                                         <div class="m-label m-flex1">Điện thoại nhà riêng</div>
-                                        <input type="text"class="m-input m-flex2"></input>
+                                        <input class="m-input m-flex2" type="date">
                                     </div>
                                     <div class="m-row">
                                         <div class="m-label m-flex1">Điện thoại khác</div>
-                                        <input type="text"class="m-input m-flex2"></input>
+                                        <input class="m-input m-flex2" type="date">
                                     </div>
                                     <div class="m-row">
                                         <div class="m-label m-flex1">Email cá nhân</div>
-                                        <input type="text"class="m-input m-flex2"></input>
+                                        <input class="m-input m-flex2" type="date">
                                     </div>
                                     <div class="m-row">
                                         <div class="m-label m-flex1">Email cơ quan</div>
-                                        <input type="text"class="m-input m-flex2"></input>
+                                        <input class="m-input m-flex2" type="date">
                                     </div>
                                     <div class="m-row">
                                         <div class="m-label m-flex1">Email khác</div>
-                                        <input type="text"class="m-input m-flex2"></input>
+                                        <input class="m-input m-flex2" type="date">
                                     </div>
                                     <div class="m-row">
                                         <div class="m-label m-flex1">Skype</div>
-                                        <input type="text"class="m-input m-flex2"></input>
+                                        <input class="m-input m-flex2" type="date">
                                     </div>
                                     <div class="m-row">
                                         <div class="m-label m-flex1">Facebook</div>
-                                        <input type="text"class="m-input m-flex2"></input>
+                                        <input class="m-input m-flex2" type="date">
                                     </div>
                                     <div class="m-row">
                                         <div class="m-label m-flex1">Zalo</div>
-                                        <input type="text"class="m-input m-flex2"></input>
+                                        <input class="m-input m-flex2" type="date">
                                     </div>
                                     <div class="m-row">
                                         <div class="m-label m-flex1">MSN ID</div>
-                                        <input type="text"class="m-input m-flex2"></input>
+                                        <input class="m-input m-flex2" type="date">
                                     </div>
                                 </div>
                                 <div class="m-flex1" style="margin-left: 24px;">
@@ -314,7 +315,7 @@
                                     </div>
                                     <div class="m-row">
                                         <div class="m-label m-flex1">Số nhà/Đường phố/Thôn xóm</div>
-                                        <input type="text"class="m-input m-flex2"></input>
+                                        <input class="m-input m-flex2" type="date">
                                     </div>
                                     <div class="m-row">
                                         <div class="m-label m-flex1">Địa chỉ</div>
@@ -322,11 +323,11 @@
                                     </div>
                                     <div class="m-row">
                                         <div class="m-label m-flex1">Số sổ hộ khẩu</div>
-                                        <input type="text"class="m-input m-flex2"></input>
+                                        <input class="m-input m-flex2" type="date">
                                     </div>
                                     <div class="m-row">
                                         <div class="m-label m-flex1">Mã số hộ gia đình</div>
-                                        <input type="text"class="m-input m-flex2"></input>
+                                        <input class="m-input m-flex2" type="date">
                                     </div>
                                     <div class="m-row">
                                         <div class="m-flex1">
@@ -392,7 +393,7 @@
                                     <div class="m-row m-flex1" style="font-weight: bold;">Liên hệ khẩn cấp</div>
                                     <div class="m-row">
                                         <div class="m-label m-flex1">Họ và tên</div>
-                                        <input type="text"class="m-input m-flex2"></input>
+                                        <input class="m-input m-flex2" type="date">
                                     </div>
                                     <div class="m-row">
                                         <div class="m-label m-flex1">Quan hệ</div>
@@ -403,19 +404,19 @@
                                     </div>
                                     <div class="m-row">
                                         <div class="m-label m-flex1">ĐT di động</div>
-                                        <input type="text"class="m-input m-flex2"></input>
+                                        <input class="m-input m-flex2" type="date">
                                     </div>
                                     <div class="m-row">
                                         <div class="m-label m-flex1">Đt nhà riêng</div>
-                                        <input type="text"class="m-input m-flex2"></input>
+                                        <input class="m-input m-flex2" type="date">
                                     </div>
                                     <div class="m-row">
                                         <div class="m-label m-flex1">Họ và tên</div>
-                                        <input type="text"class="m-input m-flex2"></input>
+                                        <input class="m-input m-flex2" type="date">
                                     </div>
                                     <div class="m-row">
                                         <div class="m-label m-flex1">Email</div>
-                                        <input type="text"class="m-input m-flex2"></input>
+                                        <input class="m-input m-flex2" type="date">
                                     </div>
                                     <div class="m-row">
                                         <div class="m-label m-flex1">Địa chỉ</div>
@@ -427,6 +428,9 @@
                             </div>
                         </div>
                     </div>
+
+                    </div>
+                    <div class="m-flex1"></div>
                 </div>
             </div>
         </div>
@@ -441,7 +445,12 @@ export default {
         Header,
         NavBar,
         MSButton,
-    }
+    },
+    methods: {
+        backPage(){
+            this.$router.push('employee');
+        },
+    },  
 }
 </script>
 <style scoped>

@@ -12,7 +12,7 @@
           <FilterTableEmployee></FilterTableEmployee>
         </div>
         <div class="button-table">
-          <button class="btn-add m-button" style="padding-left: 12px">
+          <button class="btn-add m-button" style="padding-left: 12px" @click="addEmployee()">
             <div class="icon-add m-icon-button"></div>
             <div class="m-title-button">Thêm</div>
           </button>
@@ -20,7 +20,7 @@
             <div class="icon-edit m-icon-button"></div>
             <div class="m-title-button">Xem và sửa</div>
           </button>
-          <button class="btn-delete m-button">
+          <button class="btn-delete m-button" @click="deleteEmployee()">
             <div class="icon-delete m-icon-button"></div>
             <div class="m-title-button">Xóa</div>
           </button>
@@ -31,94 +31,115 @@
             <table class="employee-table">
               <thead>
                 <tr>
-                  <th class="m-column-small align-left" style="padding-left: 16px">
+                  <th
+                    class="m-column-small align-left"
+                    style="padding-left: 16px"
+                    fieldName="EmployeeCode"
+                  >
                     Mã nhân viên
                   </th>
-                  <th class="m-column-medium align-left">Họ và tên</th>
-                  <th class="m-column-xsmall align-left">Giới tính</th>
-                  <th class="m-column-small align-center">Ngày sinh</th>
-                  <th class="m-column-large align-left">Vị trí công việc</th>
-                  <th class="m-column-large align-left">Đơn vị công tác</th>
-                  <th class="m-column-small align-left">Trạng thái</th>
-                  <th class="m-column-small align-left">Trình độ đào tạo</th>
-                  <th class="m-column-large align-left">Nơi đào tạo</th>
-                  <th class="m-column-large align-left">Chuyên ngành</th>
-                  <th class="m-column-large align-left">Email cơ quan</th>
-                  <th class="m-column-large align-left">Zalo ID</th>
-                  <th class="m-column-large align-left">Ngày thử việc</th>
-                  <th class="m-column-large align-left">Ngày chính thức</th>
-                  <th class="m-column-large align-left">Loại hợp đồng</th>
-                  <th class="m-column-large align-left" style="border-right: none">
+                  <th class="m-column-medium align-left" fieldName="FullName">
+                    Họ và tên
+                  </th>
+                  <th class="m-column-xsmall align-left" fieldName="Gender">
+                    Giới tính
+                  </th>
+                  <th
+                    class="m-column-small align-center"
+                    fieldName="DateOfBirth"
+                  >
+                    Ngày sinh
+                  </th>
+                  <th class="m-column-large align-left" fieldName="Position">
+                    Vị trí công việc
+                  </th>
+                  <th class="m-column-large align-left" fieldName="Department">
+                    Đơn vị công tác
+                  </th>
+                  <th class="m-column-small align-left" fieldName="WorkStatus">
+                    Trạng thái
+                  </th>
+                  <th
+                    class="m-column-small align-left"
+                    fieldName="Qualification"
+                  >
+                    Trình độ đào tạo
+                  </th>
+                  <th class="m-column-large align-left" fieldName="School">
+                    Nơi đào tạo
+                  </th>
+                  <th class="m-column-large align-left" fieldName="Majors">
+                    Chuyên ngành
+                  </th>
+                  <th class="m-column-large align-left" fieldName="Email">
+                    Email cơ quan
+                  </th>
+                  <th class="m-column-large align-left" fieldName="ZaloId">
+                    Zalo ID
+                  </th>
+                  <th
+                    class="m-column-large align-left"
+                    fieldName="ProbationDay"
+                  >
+                    Ngày thử việc
+                  </th>
+                  <th class="m-column-large align-left" fieldName="MainDay">
+                    Ngày chính thức
+                  </th>
+                  <th
+                    class="m-column-large align-left"
+                    fieldName="ContractType"
+                  >
+                    Loại hợp đồng
+                  </th>
+                  <th
+                    class="m-column-large align-left"
+                    style="border-right: none"
+                    fieldName="TimekeepingCode"
+                  >
                     Mã chấm cống
                   </th>
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="n in 30">
-                  <td>
-                    <div class="m-column-small align-left" style="padding-left: 16px">
-                      {{ employee.EmployeeCode }}
-                    </div>
-                  </td>
-                  <td>
-                    <div class="m-column-medium align-left">{{ employee.FullName }}</div>
-                  </td>
-                  <td>
-                    <div class="m-column-xsmall align-left">{{ employee.Gender }}</div>
-                  </td>
-                  <td>
-                    <div class="m-column-small align-center">
-                      {{ employee.DateOfBirth }}
-                    </div>
-                  </td>
-                  <td>
-                    <div class="m-column-large align-left">{{ employee.Position }}</div>
-                  </td>
-                  <td>
-                    <div class="m-column-large align-left">{{ employee.Department }}</div>
-                  </td>
-                  <td>
-                    <div class="m-column-small align-left">{{ employee.WorkStatus }}</div>
-                  </td>
-                  <td>
-                    <div class="m-column-small align-left">
-                      {{ employee.Qualification }}
-                    </div>
-                  </td>
-                  <td>
-                    <div
-                      class="m-column-large align-left fix-width-table"
-                      v-bind:title="employee.School"
-                    >
-                      {{ employee.School }}
-                    </div>
-                  </td>
-                  <td>
-                    <div class="m-column-large align-left">{{ employee.Majors }}</div>
-                  </td>
-                  <td>
-                    <div class="m-column-large align-left">{{ employee.Email }}</div>
-                  </td>
-                  <td><div class="m-column-small align-left"></div></td>
-                  <td><div class="m-column-small align-left"></div></td>
-                  <td><div class="m-column-small align-left"></div></td>
-                  <td><div class="m-column-small align-left"></div></td>
-                  <td>
-                    <div
-                      class="m-column-small align-left"
-                      style="border-right: none"
-                    ></div>
-                  </td>
+                <tr
+                  v-for="(employee, index) in employees"
+                  :key="index"
+                  :recordId="employee.EmployeeId"
+                  @click="RowSelect(employee.EmployeeId); sendToFormDetail()"
+                  :class="{row_select: rowSelect == employee.EmployeeId}"
+                >
+                  <template v-for="(value, index) in fieldName">
+                    <template v-if="value != 'EmployeeId'">
+                      <td
+                        v-if="value == 'EmployeeCode'"
+                        :key="index"
+                        style="padding-left: 16px"
+                      >
+                        {{ employee[value] }}
+                      </td>
+                      <td v-else :key="index">
+                        {{ employee[value] }}
+                      </td>
+                    </template>
+                  </template>
                 </tr>
               </tbody>
             </table>
           </div>
           <div class="number-record-table">
-            <div class="number-record">Tổng số: <span style="font-weight: bold;">585</span> bản ghi</div>
+            <div class="number-record">
+              Tổng số: <span style="font-weight: bold">585</span> bản ghi
+            </div>
           </div>
-          <vue-resizable class="detail-info" :active="['t']" :height="200" :min-height="100" :max-height="250">
+          <vue-resizable
+            class="detail-info"
+            :active="['t']"
+            :height="200"
+            :min-height="100"
+            :max-height="250"
+          >
             <DetailEmployee></DetailEmployee>
-            
           </vue-resizable>
         </div>
       </div>
@@ -126,30 +147,395 @@
   </div>
 </template>
 <script>
-import VueResizable from 'vue-resizable'
+import VueResizable from "vue-resizable";
 import Header from "@/components/Header";
 import NavBar from "@/components/NavBar";
 import FilterTableEmployee from "@/components/FilterTableEmployee";
 import MSButton from "@/components/MSButton";
 import DetailEmployee from "@/components/DetailEmployee";
+import EventBus from "@/EventBus"
 export default {
   data() {
     return {
-      employee: {
-        EmployeeCode: "NV-0001",
-        FullName: "Hồ Nam Anh",
-        Gender: "Nam",
-        DateOfBirth: "22-09-1998",
-        Position: "Fresher",
-        Department: "Phòng Đào Tạo",
-        WorkStatus: "Đang thử việc",
-        Qualification: "Đại học",
-        School: "Học viện công nghệ bưu chính viễn thông",
-        Majors: "An toàn thông tin",
-        Email: "namanh22091998@gmail.com",
-      },
+      employees: [
+        {
+          EmployeeId: "11643064-22fb-7e14-1399-04b3a3d51ef2",
+          EmployeeCode: "NV-0001",
+          FullName: "Hồ Nam Anh",
+          Gender: "Nam",
+          DateOfBirth: "22-09-1998",
+          Position: "Fresher",
+          Department: "Phòng Đào Tạo",
+          WorkStatus: "Đang thử việc",
+          Qualification: "Đại học",
+          School: "Học viện công nghệ bưu chính viễn thông",
+          Majors: "An toàn thông tin",
+          Email: "namanh22091998@gmail.com",
+        },
+        {
+          EmployeeId: "119a0442-6d66-3af1-25c4-4d1f326d5ebd",
+          EmployeeCode: "NV-0001",
+          FullName: "Hồ Nam Anh 123",
+          Gender: "Nam",
+          DateOfBirth: "22-09-1998",
+          Position: "Fresher",
+          Department: "Phòng Đào Tạo",
+          WorkStatus: "Đang thử việc",
+          Qualification: "Đại học",
+          School: "Học viện công nghệ bưu chính viễn thông",
+          Majors: "An toàn thông tin",
+          Email: "namanh22091998@gmail.com",
+        },
+        {
+          EmployeeId: "11c46222-5fb0-24f4-d865-390639088226",
+          EmployeeCode: "NV-0001",
+          FullName: "Hồ Nam Anh 456",
+          Gender: "Nam",
+          DateOfBirth: "22-09-1998",
+          Position: "Fresher",
+          Department: "Phòng Đào Tạo",
+          WorkStatus: "Đang thử việc",
+          Qualification: "Đại học",
+          School: "Học viện công nghệ bưu chính viễn thông",
+          Majors: "An toàn thông tin",
+          Email: "namanh22091998@gmail.com",
+        },
+        {
+          EmployeeId: "11c46222-5fb0-24f4-d865-390639088227",
+          EmployeeCode: "NV-0001",
+          FullName: "Hồ Nam Anh 789",
+          Gender: "Nam",
+          DateOfBirth: "22-09-1998",
+          Position: "Fresher",
+          Department: "Phòng Đào Tạo",
+          WorkStatus: "Đang thử việc",
+          Qualification: "Đại học",
+          School: "Học viện công nghệ bưu chính viễn thông",
+          Majors: "An toàn thông tin",
+          Email: "namanh22091998@gmail.com",
+        },
+        {
+          EmployeeId: "11c46222-5fb0-24f4-d865-390639088228",
+          EmployeeCode: "NV-0001",
+          FullName: "Hồ Nam Anh",
+          Gender: "Nam",
+          DateOfBirth: "22-09-1998",
+          Position: "Fresher",
+          Department: "Phòng Đào Tạo",
+          WorkStatus: "Đang thử việc",
+          Qualification: "Đại học",
+          School: "Học viện công nghệ bưu chính viễn thông",
+          Majors: "An toàn thông tin",
+          Email: "namanh22091998@gmail.com",
+        },
+        {
+          EmployeeId: "11c46222-5fb0-24f4-d865-390639088229",
+          EmployeeCode: "NV-0001",
+          FullName: "Hồ Nam Anh",
+          Gender: "Nam",
+          DateOfBirth: "22-09-1998",
+          Position: "Fresher",
+          Department: "Phòng Đào Tạo",
+          WorkStatus: "Đang thử việc",
+          Qualification: "Đại học",
+          School: "Học viện công nghệ bưu chính viễn thông",
+          Majors: "An toàn thông tin",
+          Email: "namanh22091998@gmail.com",
+        },
+        {
+          EmployeeId: "11c46222-5fb0-24f4-d865-390639088230",
+          EmployeeCode: "NV-0001",
+          FullName: "Hồ Nam Anh",
+          Gender: "Nam",
+          DateOfBirth: "22-09-1998",
+          Position: "Fresher",
+          Department: "Phòng Đào Tạo",
+          WorkStatus: "Đang thử việc",
+          Qualification: "Đại học",
+          School: "Học viện công nghệ bưu chính viễn thông",
+          Majors: "An toàn thông tin",
+          Email: "namanh22091998@gmail.com",
+        },
+        {
+          EmployeeId: "11c46222-5fb0-24f4-d865-390639088231",
+          EmployeeCode: "NV-0001",
+          FullName: "Hồ Nam Anh",
+          Gender: "Nam",
+          DateOfBirth: "22-09-1998",
+          Position: "Fresher",
+          Department: "Phòng Đào Tạo",
+          WorkStatus: "Đang thử việc",
+          Qualification: "Đại học",
+          School: "Học viện công nghệ bưu chính viễn thông",
+          Majors: "An toàn thông tin",
+          Email: "namanh22091998@gmail.com",
+        },
+        {
+          EmployeeId: "11c46222-5fb0-24f4-d865-390639088232",
+          EmployeeCode: "NV-0001",
+          FullName: "Hồ Nam Anh",
+          Gender: "Nam",
+          DateOfBirth: "22-09-1998",
+          Position: "Fresher",
+          Department: "Phòng Đào Tạo",
+          WorkStatus: "Đang thử việc",
+          Qualification: "Đại học",
+          School: "Học viện công nghệ bưu chính viễn thông",
+          Majors: "An toàn thông tin",
+          Email: "namanh22091998@gmail.com",
+        },
+        {
+          EmployeeId: "11c46222-5fb0-24f4-d865-390639088233",
+          EmployeeCode: "NV-0001",
+          FullName: "Hồ Nam Anh",
+          Gender: "Nam",
+          DateOfBirth: "22-09-1998",
+          Position: "Fresher",
+          Department: "Phòng Đào Tạo",
+          WorkStatus: "Đang thử việc",
+          Qualification: "Đại học",
+          School: "Học viện công nghệ bưu chính viễn thông",
+          Majors: "An toàn thông tin",
+          Email: "namanh22091998@gmail.com",
+        },
+        {
+          EmployeeId: "11c46222-5fb0-24f4-d865-390639088234",
+          EmployeeCode: "NV-0001",
+          FullName: "Hồ Nam Anh",
+          Gender: "Nam",
+          DateOfBirth: "22-09-1998",
+          Position: "Fresher",
+          Department: "Phòng Đào Tạo",
+          WorkStatus: "Đang thử việc",
+          Qualification: "Đại học",
+          School: "Học viện công nghệ bưu chính viễn thông",
+          Majors: "An toàn thông tin",
+          Email: "namanh22091998@gmail.com",
+        },
+        {
+          EmployeeId: "11c46222-5fb0-24f4-d865-390639088235",
+          EmployeeCode: "NV-0001",
+          FullName: "Hồ Nam Anh",
+          Gender: "Nam",
+          DateOfBirth: "22-09-1998",
+          Position: "Fresher",
+          Department: "Phòng Đào Tạo",
+          WorkStatus: "Đang thử việc",
+          Qualification: "Đại học",
+          School: "Học viện công nghệ bưu chính viễn thông",
+          Majors: "An toàn thông tin",
+          Email: "namanh22091998@gmail.com",
+        },
+        {
+          EmployeeId: "11c46222-5fb0-24f4-d865-390639088236",
+          EmployeeCode: "NV-0001",
+          FullName: "Hồ Nam Anh",
+          Gender: "Nam",
+          DateOfBirth: "22-09-1998",
+          Position: "Fresher",
+          Department: "Phòng Đào Tạo",
+          WorkStatus: "Đang thử việc",
+          Qualification: "Đại học",
+          School: "Học viện công nghệ bưu chính viễn thông",
+          Majors: "An toàn thông tin",
+          Email: "namanh22091998@gmail.com",
+        },
+        {
+          EmployeeId: "11c46222-5fb0-24f4-d865-390639088237",
+          EmployeeCode: "NV-0001",
+          FullName: "Hồ Nam Anh",
+          Gender: "Nam",
+          DateOfBirth: "22-09-1998",
+          Position: "Fresher",
+          Department: "Phòng Đào Tạo",
+          WorkStatus: "Đang thử việc",
+          Qualification: "Đại học",
+          School: "Học viện công nghệ bưu chính viễn thông",
+          Majors: "An toàn thông tin",
+          Email: "namanh22091998@gmail.com",
+        },
+        {
+          EmployeeId: "11c46222-5fb0-24f4-d865-390639088238",
+          EmployeeCode: "NV-0001",
+          FullName: "Hồ Nam Anh",
+          Gender: "Nam",
+          DateOfBirth: "22-09-1998",
+          Position: "Fresher",
+          Department: "Phòng Đào Tạo",
+          WorkStatus: "Đang thử việc",
+          Qualification: "Đại học",
+          School: "Học viện công nghệ bưu chính viễn thông",
+          Majors: "An toàn thông tin",
+          Email: "namanh22091998@gmail.com",
+        },
+        {
+          EmployeeId: "11c46222-5fb0-24f4-d865-390639088239",
+          EmployeeCode: "NV-0001",
+          FullName: "Hồ Nam Anh",
+          Gender: "Nam",
+          DateOfBirth: "22-09-1998",
+          Position: "Fresher",
+          Department: "Phòng Đào Tạo",
+          WorkStatus: "Đang thử việc",
+          Qualification: "Đại học",
+          School: "Học viện công nghệ bưu chính viễn thông",
+          Majors: "An toàn thông tin",
+          Email: "namanh22091998@gmail.com",
+        },
+        {
+          EmployeeId: "11c46222-5fb0-24f4-d865-390639088240",
+          EmployeeCode: "NV-0001",
+          FullName: "Hồ Nam Anh",
+          Gender: "Nam",
+          DateOfBirth: "22-09-1998",
+          Position: "Fresher",
+          Department: "Phòng Đào Tạo",
+          WorkStatus: "Đang thử việc",
+          Qualification: "Đại học",
+          School: "Học viện công nghệ bưu chính viễn thông",
+          Majors: "An toàn thông tin",
+          Email: "namanh22091998@gmail.com",
+        },
+        {
+          EmployeeId: "11c46222-5fb0-24f4-d865-390639088241",
+          EmployeeCode: "NV-0001",
+          FullName: "Hồ Nam Anh",
+          Gender: "Nam",
+          DateOfBirth: "22-09-1998",
+          Position: "Fresher",
+          Department: "Phòng Đào Tạo",
+          WorkStatus: "Đang thử việc",
+          Qualification: "Đại học",
+          School: "Học viện công nghệ bưu chính viễn thông",
+          Majors: "An toàn thông tin",
+          Email: "namanh22091998@gmail.com",
+        },
+        {
+          EmployeeId: "11c46222-5fb0-24f4-d865-390639088242",
+          EmployeeCode: "NV-0001",
+          FullName: "Hồ Nam Anh",
+          Gender: "Nam",
+          DateOfBirth: "22-09-1998",
+          Position: "Fresher",
+          Department: "Phòng Đào Tạo",
+          WorkStatus: "Đang thử việc",
+          Qualification: "Đại học",
+          School: "Học viện công nghệ bưu chính viễn thông",
+          Majors: "An toàn thông tin",
+          Email: "namanh22091998@gmail.com",
+        },
+        {
+          EmployeeId: "11c46222-5fb0-24f4-d865-390639088243",
+          EmployeeCode: "NV-0001",
+          FullName: "Hồ Nam Anh",
+          Gender: "Nam",
+          DateOfBirth: "22-09-1998",
+          Position: "Fresher",
+          Department: "Phòng Đào Tạo",
+          WorkStatus: "Đang thử việc",
+          Qualification: "Đại học",
+          School: "Học viện công nghệ bưu chính viễn thông",
+          Majors: "An toàn thông tin",
+          Email: "namanh22091998@gmail.com",
+        },
+        {
+          EmployeeId: "11c46222-5fb0-24f4-d865-390639088244",
+          EmployeeCode: "NV-0001",
+          FullName: "Hồ Nam Anh",
+          Gender: "Nam",
+          DateOfBirth: "22-09-1998",
+          Position: "Fresher",
+          Department: "Phòng Đào Tạo",
+          WorkStatus: "Đang thử việc",
+          Qualification: "Đại học",
+          School: "Học viện công nghệ bưu chính viễn thông",
+          Majors: "An toàn thông tin",
+          Email: "namanh22091998@gmail.com",
+        },
+        {
+          EmployeeId: "11c46222-5fb0-24f4-d865-390639088245",
+          EmployeeCode: "NV-0001",
+          FullName: "Hồ Nam Anh",
+          Gender: "Nam",
+          DateOfBirth: "22-09-1998",
+          Position: "Fresher",
+          Department: "Phòng Đào Tạo",
+          WorkStatus: "Đang thử việc",
+          Qualification: "Đại học",
+          School: "Học viện công nghệ bưu chính viễn thông",
+          Majors: "An toàn thông tin",
+          Email: "namanh22091998@gmail.com",
+        },
+        {
+          EmployeeId: "11c46222-5fb0-24f4-d865-390639088246",
+          EmployeeCode: "NV-0001",
+          FullName: "Hồ Nam Anh",
+          Gender: "Nam",
+          DateOfBirth: "22-09-1998",
+          Position: "Fresher",
+          Department: "Phòng Đào Tạo",
+          WorkStatus: "Đang thử việc",
+          Qualification: "Đại học",
+          School: "Học viện công nghệ bưu chính viễn thông",
+          Majors: "An toàn thông tin",
+          Email: "namanh22091998@gmail.com",
+        },
+        {
+          EmployeeId: "11c46222-5fb0-24f4-d865-390639088247",
+          EmployeeCode: "NV-0001",
+          FullName: "Hồ Nam Anh",
+          Gender: "Nam",
+          DateOfBirth: "22-09-1998",
+          Position: "Fresher",
+          Department: "Phòng Đào Tạo",
+          WorkStatus: "Đang thử việc",
+          Qualification: "Đại học",
+          School: "Học viện công nghệ bưu chính viễn thông",
+          Majors: "An toàn thông tin",
+          Email: "namanh22091998@gmail.com",
+        },
+        {
+          EmployeeId: "11c46222-5fb0-24f4-d865-390639088248",
+          EmployeeCode: "NV-0001",
+          FullName: "Hồ Nam Anh",
+          Gender: "Nam",
+          DateOfBirth: "22-09-1998",
+          Position: "Fresher",
+          Department: "Phòng Đào Tạo",
+          WorkStatus: "Đang thử việc",
+          Qualification: "Đại học",
+          School: "Học viện công nghệ bưu chính viễn thông",
+          Majors: "An toàn thông tin",
+          Email: "namanh22091998@gmail.com",
+        },
+        {
+          EmployeeId: "11c46222-5fb0-24f4-d865-390639088249",
+          EmployeeCode: "NV-0001",
+          FullName: "Hồ Nam Anh",
+          Gender: "Nam",
+          DateOfBirth: "22-09-1998",
+          Position: "Fresher",
+          Department: "Phòng Đào Tạo",
+          WorkStatus: "Đang thử việc",
+          Qualification: "Đại học",
+          School: "Học viện công nghệ bưu chính viễn thông",
+          Majors: "An toàn thông tin",
+          Email: "namanh22091998@gmail.com",
+        },
+      ],
       newHeight: 40,
+      rowSelect: null,
+      fieldName: [],
     };
+  },
+  mounted(){
+      var ths= this.$el.querySelectorAll('th');
+      var arr= [];
+      ths.forEach(function(value, index){
+       arr.push(value.getAttribute('fieldName'));
+      });
+      this.fieldName= arr;
+      debugger;
   },
   components: {
     Header,
@@ -162,6 +548,29 @@ export default {
   methods: {
     resize(newRect) {
       this.newHeight = newRect.newHeight;
+    },
+    deleteEmployee() {},
+    RowSelect(employeeId){
+      this.rowSelect= employeeId;
+    },
+    deleteEmployee(){
+      // debugger
+      var employeeId= this.rowSelect; 
+      var listEmployee= this.employees.filter(function(employee, index){
+        return employee.EmployeeId != employeeId;
+        // debugger
+      })
+      this.employees= listEmployee;
+    },
+    addEmployee(){
+      this.$router.push('add-employee');
+    },
+    sendToFormDetail(){
+      var employeeId= this.rowSelect;
+      var employee= this.employees.find(function(employee){
+        return employee.EmployeeId == employeeId;
+      });
+      EventBus.$emit('showDetail', employee);
     },
   },
 };
@@ -199,8 +608,8 @@ export default {
   height: calc(100vh - 44px);
   display: flex;
 }
-.block-body .nav-bar {
-}
+/* .block-body .nav-bar {
+} */
 .block-body .content-body {
   width: calc(100% - 85px);
   height: 100%;
@@ -243,10 +652,10 @@ export default {
   cursor: pointer;
 }
 .m-button:hover {
-  background-color: #E7F4FF;
+  background-color: #e7f4ff;
 }
 .m-button:focus {
-  background-color: #CFE9FF;
+  background-color: #cfe9ff;
 }
 .m-icon-button {
   padding-left: 4px;
@@ -296,12 +705,14 @@ export default {
 table {
   border-collapse: collapse;
   width: calc(100% - 32px - 27px);
+  table-layout: fixed;
 }
 
 tr th,
 td {
   border-right: 1px solid #bbbbbb;
   cursor: pointer;
+  height: 32px;
 }
 tr th {
   background-color: #e5e5e5;
@@ -311,13 +722,14 @@ tr th {
 th,
 td {
   border-bottom: 1px solid #bbbbbb;
-  padding: 5px 0 4px 5px;
+  padding-left: 5px;
+  font-size: 15px;
 }
 tr:nth-child(even) {
   background-color: #e5e5e5;
 }
 tr:hover {
-  background-color: #E7F4FF;
+  background-color: #e7f4ff;
 }
 tr:focus {
   background-color: #4664ca;
@@ -327,7 +739,7 @@ tr:focus {
   width: 100%;
   border-bottom: 1px solid #bbbbbb;
 }
-.number-record-table .number-record{
+.number-record-table .number-record {
   font-size: 14px;
   line-height: 26px;
   padding-left: 16px;

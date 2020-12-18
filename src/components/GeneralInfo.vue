@@ -6,69 +6,87 @@
     <div class="info-detail-left m-flex2">
       <div class="m-row" style="margin-top: 8px">
         <div class="m-flex1 m-label">Mã nhân viên</div>
-        <div class="m-flex2 m-info">NV_0001</div>
+        <div class="m-flex5 m-info" fieldName= "EmployeeCode">{{employee.EmployeeCode}}</div>
       </div>
       <div class="m-row">
         <div class="m-flex1 m-label">Họ và Tên</div>
-        <div class="m-flex2 m-info">Hồ Nam Anh</div>
+        <div class="m-flex5 m-info" fieldName= "FullName">{{employee.FullName}}</div>
       </div>
       <div class="m-row">
         <div class="m-flex1 m-label">Giới tính</div>
-        <div class="m-flex2 m-info">Nam</div>
+        <div class="m-flex5 m-info" fieldName= "Gender">{{employee.Gender}}</div>
       </div>
       <div class="m-row">
         <div class="m-flex1 m-label">Ngày sinh</div>
-        <div class="m-flex2 m-info">22/09/1998</div>
+        <div class="m-flex5 m-info" fieldName= "DateOfBirth">{{employee.DateOfBirth}}</div>
       </div>
       <div class="m-row">
         <div class="m-flex1 m-label">Số CMTND/thẻ căn cước</div>
-        <div class="m-flex2 m-info">0987654321</div>
+        <div class="m-flex5 m-info" fieldName= "IdentityNumber">{{employee.IdentityNumber}}</div>
       </div>
       <div class="m-row">
         <div class="m-flex1 m-label">Ngày cấp</div>
-        <div class="m-flex2 m-info">01/02/2013</div>
+        <div class="m-flex5 m-info" fieldName= "IdentityDate">{{employee.IdentityDate}}</div>
       </div>
     </div>
     <div class="info-detail-right m-flex2">
       <div class="m-row">
         <div class="m-flex1 m-label" style="margin-top: 8px">Nơi cấp</div>
-        <div class="m-flex2 m-info">Hà Nội</div>
+        <div class="m-flex5 m-info" fieldName= "IdentityPlace">{{employee.IdentityPlace}}</div>
       </div>
       <div class="m-row">
         <div class="m-flex1 m-label">Hộ chiếu</div>
-        <div class="m-flex2 m-info">0999888777</div>
+        <div class="m-flex5 m-info" fieldName= "Passport">{{employee.Passport}}</div>
       </div>
       <div class="m-row">
         <div class="m-flex1 m-label">Vị trí công việc</div>
-        <div class="m-flex2 m-info">Fresher</div>
+        <div class="m-flex5 m-info" fieldName= "Position">{{employee.Position}}</div>
       </div>
       <div class="m-row">
         <div class="m-flex1 m-label">Đơn vị công tác</div>
-        <div class="m-flex2 m-info">Phòng Đào Tạo</div>
+        <div class="m-flex5 m-info" fieldName= "Department">{{employee.Department}}</div>
       </div>
       <div class="m-row">
         <div class="m-flex1 m-label">Ngày thử việc</div>
-        <div class="m-flex2 m-info">03/12/2020</div>
+        <div class="m-flex5 m-info" fieldName= "ProbationDay">{{employee.ProbationDay}}</div>
       </div>
       <div class="m-row">
         <div class="m-flex1 m-label">Ngày chính thức</div>
-        <div class="m-flex2 m-info">10/01/2002l21</div>
-      </div>
-      <div class="m-row">
-        <div class="m-flex1 m-label">Mã nhân viên</div>
-        <div class="m-flex2 m-info">NV_0001</div>
+        <div class="m-flex5 m-info" fieldName= "MainDay">{{employee.MainDay}}</div>
       </div>
     </div>
   </div>
 </template>
+<script>
+import EventBus from '@/EventBus'
+export default {
+  data() {
+    return {
+      employee: {},
+    }
+  },
+  mounted(){
+    debugger;
+    EventBus.$on('showDetail', this.handler);
+    // this.setInfoToForm();
+  },
+  methods: {
+    handler(e){
+      console.log("recieved: "+ e);
+      this.employee= e;
+      // debugger
+      // var divs= this.$el.querySelectorAll('div[fieldName]');
+      // var employee= this.employee;
+      // divs.forEach(function(div, index){
+      //   var fieldName= div.getAttribute('fieldName');
+      //   var value= employee[fieldName];
+      //   debugger
+      // })
+    },
+  },
+}
+</script>
 <style scoped>
-.m-flex1 {
-  flex: 1;
-}
-.m-flex2 {
-  flex: 2;
-}
-
 .m-row {
   display: flex;
   margin-bottom: 8px;

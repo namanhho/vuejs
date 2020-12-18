@@ -44,6 +44,12 @@
       </a>
       <a href="" class="item-menu">
         <div class="block-item-menu">
+          <div class="icon-item-menu icon-rate"></div>
+          <div class="title-item-menu">Đánh giá</div>
+        </div>
+      </a>
+      <a href="" class="item-menu">
+        <div class="block-item-menu">
           <div class="icon-item-menu icon-report"></div>
           <div class="title-item-menu">Báo cáo</div>
         </div>
@@ -112,6 +118,9 @@
 }
 .icon-training{
   background-image: url("~@/assets/icons/icon-training.svg");
+}
+.icon-rate{
+  background-image: url("~@/assets/icons/icon-rate.svg");
 }
 .icon-report{
   background-image: url("~@/assets/icons/icon-report.svg");

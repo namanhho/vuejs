@@ -6,35 +6,35 @@
       </div>
       <div class="m-row">
         <div class="m-flex1 m-label">ĐT di động</div>
-        <div class="m-flex2 m-info">0999888777</div>
+        <div class="m-flex5 m-info">{{employee.PhoneNumber}}</div>
       </div>
       <div class="m-row">
         <div class="m-flex1 m-label">ĐT cơ quan</div>
-        <div class="m-flex2 m-info">0123456789</div>
+        <div class="m-flex5 m-info">{{employee.PhoneNumberCompany}}</div>
       </div>
       <div class="m-row">
         <div class="m-flex1 m-label">Email cơ quan</div>
-        <div class="m-flex2 m-info">hnanh@misa.com</div>
+        <div class="m-flex5 m-info">{{employee.EmailCompany}}</div>
       </div>
       <div class="m-row">
         <div class="m-flex1 m-label">Email cá nhân</div>
-        <div class="m-flex2 m-info">namanh22091998@gmail.com</div>
+        <div class="m-flex5 m-info">{{employee.Email}}</div>
       </div>
       <div class="m-row">
         <div class="m-flex1 m-label">Chỗ ở hiện nay</div>
-        <div class="m-flex2 m-info">Hoàng Xá, Thống Nhất Thường Tín, Hà Nội</div>
+        <div class="m-flex5 m-info">{{employee.CurrentPlace}}</div>
       </div>
       <div class="m-row">
         <div class="m-flex1 m-label">Skype</div>
-        <div class="m-flex2 m-info"></div>
+        <div class="m-flex5 m-info">{{employee.Skype}}</div>
       </div>
       <div class="m-row">
         <div class="m-flex1 m-label">Facebook</div>
-        <div class="m-flex2 m-info"></div>
+        <div class="m-flex5 m-info">{{employee.Facebook}}</div>
       </div>
       <div class="m-row">
         <div class="m-flex1 m-label">Zalo</div>
-        <div class="m-flex2 m-info"></div>
+        <div class="m-flex5 m-info">{{employee.Zalo}}</div>
       </div>
     </div>
     <div class="info-right m-flex1">
@@ -43,35 +43,47 @@
       </div>
       <div class="m-row">
         <div class="m-flex1 m-label">Họ và Tên</div>
-        <div class="m-flex2 m-info"></div>
+        <div class="m-flex5 m-info">{{employee.EmergencyFullName}}</div>
       </div>
       <div class="m-row">
         <div class="m-flex1 m-label">Quan hệ</div>
-        <div class="m-flex2 m-info"></div>
+        <div class="m-flex5 m-info">{{employee.EmergencyRelationship}}</div>
       </div>
       <div class="m-row">
         <div class="m-flex1 m-label">Điện thoại</div>
-        <div class="m-flex2 m-info">0111222333</div>
+        <div class="m-flex5 m-info">{{employee.EmergencyPhone}}</div>
       </div>
       <div class="m-row">
         <div class="m-flex1 m-label">Email</div>
-        <div class="m-flex2 m-info"></div>
+        <div class="m-flex5 m-info">{{employee.EmergencyEmail}}</div>
       </div>
       <div class="m-row">
         <div class="m-flex1 m-label">Địa chỉ</div>
-        <div class="m-flex2 m-info"></div>
+        <div class="m-flex5 m-info">{{employee.EmergencyAddress}}</div>
       </div>
     </div>
   </div>
 </template>
-<style scoped>
-.m-flex1 {
-  flex: 1;
-}
-.m-flex2 {
-  flex: 2;
-}
 
+<script>
+import EventBus from "@/EventBus"
+export default {
+  data() {
+    return {
+      employee: {}
+    }
+  },
+  mounted(){
+    EventBus.$on('showDetail', this.handler);
+  },
+  methods: {
+    handler(e){
+        this.employee= e;
+    }
+  }
+}
+</script>
+<style scoped>
 .m-row {
   display: flex;
   margin-bottom: 8px;
