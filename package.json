@@ -10,6 +10,8 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "devextreme": "20.2.4",
+    "devextreme-vue": "20.2.4",
     "vue": "^2.5.2",
     "vue-custom-scrollbar": "^1.4.0",
     "vue-drag-resize": "^1.4.2",

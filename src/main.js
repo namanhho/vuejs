@@ -7,6 +7,8 @@ import router from './router'
 // scss
 import '@/assets/scss/MSCommon.scss';
 import '@/assets/scss/MSIcon.scss';
+import 'devextreme/dist/css/dx.common.css';
+import 'devextreme/dist/css/dx.light.css';
 
 Vue.config.productionTip = false
 
