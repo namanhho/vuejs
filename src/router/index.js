@@ -5,6 +5,7 @@ import PropDemo from '@/components/PropDemo'
 import Employee from '@/components/Employee'
 import Demo from '@/components/Demo'
 import AddEmployee from '@/components/AddEmployee'
+// import DropDownInput from '@/components/DropDownInput'
 Vue.use(Router)
 
 export default new Router({
@@ -34,6 +35,11 @@ export default new Router({
       path: '/add-employee',
       name: 'AddEmployee',
       component: AddEmployee
-    }
+    },
+    // {
+    //   path: '/test',
+    //   name: 'DropDownInput',
+    //   component: DropDownInput
+    // }
   ]
 })

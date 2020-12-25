@@ -1,0 +1,98 @@
+export const positions=[
+{
+    "ID": 1,
+    "PositionCode": "NV-0001",
+    "PositionName": "Giám Đốc",
+    "Department": "Phòng Nhân Sự",
+},
+{
+    "ID": 2,
+    "PositionCode": "NV-0002",
+    "PositionName": "Phó Giám Đốc",
+    "Department": "Phòng Nhân Sự",
+},
+{
+    "ID": 3,
+    "PositionCode": "NV-0003",
+    "PositionName": "Nhân Viên Nhân Sự",
+    "Department": "Phòng Nhân Sự",
+},
+{
+    "ID": 4,
+    "PositionCode": "NV-0004",
+    "PositionName": "Nhân Viên Hành Chính",
+    "Department": "Phòng Hành Chính",
+},
+{
+    "ID": 5,
+    "PositionCode": "NV-0005",
+    "PositionName": "Nhân Viên Kế Toán",
+    "Department": "Phòng Kế Toán",
+},
+{
+    "ID": 6,
+    "PositionCode": "NV-0006",
+    "PositionName": "Nhân Viên Kiểm Thử",
+    "Department": "Phòng Kiểm Thử",
+},
+{
+    "ID": 7,
+    "PositionCode": "NV-0007",
+    "PositionName": "Nhân Viên Nghiệp Vụ",
+    "Department": "Phòng Kiểm Thử",
+},
+{
+    "ID": 8,
+    "PositionCode": "NV-0008",
+    "PositionName": "Vị Trí Test",
+    "Department": "Phòng Kiểm Thử",
+},
+{
+    "ID": 9,
+    "PositionCode": "NV-0009",
+    "PositionName": "Công Nhân",
+    "Department": "Nhà Máy",
+},
+{
+    "ID": 10,
+    "PositionCode": "NV-00010",
+    "PositionName": "Nhân Viên Kỹ Thuật",
+    "Department": "Nhà Máy",
+},
+{
+    "ID": 11,
+    "PositionCode": "NV-00011",
+    "PositionName": "Quản Đốc Phân Xưởng",
+    "Department": "Nhà Máy",
+},
+{
+    "ID": 12,
+    "PositionCode": "NV-00012",
+    "PositionName": "Trưởng Phòng Kỹ Thuật",
+    "Department": "Nhà Máy",
+},
+{
+    "ID": 13,
+    "PositionCode": "NV-00013",
+    "PositionName": "Chuyên Gia Phân Tích Thiết Kế",
+    "Department": "Phòng Thiết Kế",
+},
+{
+    "ID": 14,
+    "PositionCode": "NV-00014",
+    "PositionName": "Nhân Viên Làm Rõ Yêu Cầu",
+    "Department": "Phòng Thiết Kế",
+},
+{
+    "ID": 15,
+    "PositionCode": "NV-00015",
+    "PositionName": "Nhân Viên Viết Tài Liệu",
+    "Department": "Phòng Thiết Kế",
+},
+{
+    "ID": 13,
+    "PositionCode": "NV-00013",
+    "PositionName": "Chuyên Gia Phân Tích Thiết Kế",
+    "Department": "Phòng Thiết Kế",
+},
+]

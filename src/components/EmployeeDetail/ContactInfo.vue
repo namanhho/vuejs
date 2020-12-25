@@ -1,40 +1,40 @@
 <template>
-  <div class="info-contact" id="style-scollbar">
+  <div class="info-contact style-scollbar">
     <div class="info-left m-flex1">
       <div class="m-flex1" style="margin: 16px 0; color: #559edf; magin: 16px 0">
         Thông tin liên hệ
       </div>
       <div class="m-row">
         <div class="m-flex1 m-label">ĐT di động</div>
-        <div class="m-flex5 m-info">{{employee.PhoneNumber}}</div>
+        <div class="m-flex5 m-info">{{ employee.PhoneNumber }}</div>
       </div>
       <div class="m-row">
         <div class="m-flex1 m-label">ĐT cơ quan</div>
-        <div class="m-flex5 m-info">{{employee.PhoneNumberCompany}}</div>
+        <div class="m-flex5 m-info">{{ employee.CompanyPhoneNumber }}</div>
       </div>
       <div class="m-row">
         <div class="m-flex1 m-label">Email cơ quan</div>
-        <div class="m-flex5 m-info">{{employee.EmailCompany}}</div>
+        <div class="m-flex5 m-info">{{ employee.EmailCompany }}</div>
       </div>
       <div class="m-row">
         <div class="m-flex1 m-label">Email cá nhân</div>
-        <div class="m-flex5 m-info">{{employee.Email}}</div>
+        <div class="m-flex5 m-info">{{ employee.Email }}</div>
       </div>
       <div class="m-row">
         <div class="m-flex1 m-label">Chỗ ở hiện nay</div>
-        <div class="m-flex5 m-info">{{employee.CurrentPlace}}</div>
+        <div class="m-flex5 m-info">{{ employee.AddressCurrent }}</div>
       </div>
       <div class="m-row">
         <div class="m-flex1 m-label">Skype</div>
-        <div class="m-flex5 m-info">{{employee.Skype}}</div>
+        <div class="m-flex5 m-info">{{ employee.Skype }}</div>
       </div>
       <div class="m-row">
         <div class="m-flex1 m-label">Facebook</div>
-        <div class="m-flex5 m-info">{{employee.Facebook}}</div>
+        <div class="m-flex5 m-info">{{ employee.Facebook }}</div>
       </div>
       <div class="m-row">
         <div class="m-flex1 m-label">Zalo</div>
-        <div class="m-flex5 m-info">{{employee.Zalo}}</div>
+        <div class="m-flex5 m-info">{{ employee.Zalo }}</div>
       </div>
     </div>
     <div class="info-right m-flex1">
@@ -43,45 +43,45 @@
       </div>
       <div class="m-row">
         <div class="m-flex1 m-label">Họ và Tên</div>
-        <div class="m-flex5 m-info">{{employee.EmergencyFullName}}</div>
+        <div class="m-flex5 m-info">{{ employee.UrgencyFullName }}</div>
       </div>
       <div class="m-row">
         <div class="m-flex1 m-label">Quan hệ</div>
-        <div class="m-flex5 m-info">{{employee.EmergencyRelationship}}</div>
+        <div class="m-flex5 m-info">{{ employee.UrgencyRelationship }}</div>
       </div>
       <div class="m-row">
         <div class="m-flex1 m-label">Điện thoại</div>
-        <div class="m-flex5 m-info">{{employee.EmergencyPhone}}</div>
+        <div class="m-flex5 m-info">{{ employee.UrgencyPhoneNumber }}</div>
       </div>
       <div class="m-row">
         <div class="m-flex1 m-label">Email</div>
-        <div class="m-flex5 m-info">{{employee.EmergencyEmail}}</div>
+        <div class="m-flex5 m-info">{{ employee.UrgencyEmail }}</div>
       </div>
       <div class="m-row">
         <div class="m-flex1 m-label">Địa chỉ</div>
-        <div class="m-flex5 m-info">{{employee.EmergencyAddress}}</div>
+        <div class="m-flex5 m-info">{{ employee.UrgencyAddress }}</div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import EventBus from "@/EventBus"
+import EventBus from "@/EventBus";
 export default {
   data() {
     return {
-      employee: {}
-    }
+      employee: {},
+    };
   },
-  mounted(){
-    EventBus.$on('showDetail', this.handler);
+  created() {
+    EventBus.$on("showDetail", this.handler);
   },
   methods: {
-    handler(e){
-        this.employee= e;
-    }
-  }
-}
+    handler(e) {
+      this.employee = e;
+    },
+  },
+};
 </script>
 <style scoped>
 .m-row {
@@ -97,23 +97,6 @@ export default {
 .m-info {
   font-weight: bold;
   font-size: 13px;
-}
-#style-scollbar::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  border-radius: 10px;
-  background-color: #f5f5f5;
-}
-
-#style-scollbar::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-  background-color: #f5f5f5;
-}
-
-#style-scollbar::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  background-color: #555;
 }
 .info-contact {
   width: 100%;

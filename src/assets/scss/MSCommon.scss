@@ -36,3 +36,10 @@
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   background-color: #555;
 }
+/*Cố định chiều dài cột, khi dữ liệu dài quá max-width thì hiện...*/
+.fix-width-table {
+  max-width: 150px;
+  white-space: nowrap;
+  overflow: hidden !important;
+  text-overflow: ellipsis;
+}

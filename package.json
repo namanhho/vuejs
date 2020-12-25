@@ -10,13 +10,16 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "devextreme": "20.2.4",
     "devextreme-vue": "20.2.4",
     "vue": "^2.5.2",
     "vue-custom-scrollbar": "^1.4.0",
     "vue-drag-resize": "^1.4.2",
     "vue-resizable": "^1.2.5",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "vue-uuid": "^2.0.2",
+    "whatwg-fetch": "^3.5.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

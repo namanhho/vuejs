@@ -1,5 +1,5 @@
 <template>
-    <button class="btn" :style="styleBtn">
+    <button class="btn" :style="styleBtn" @click="test()">
         <div v-if="icon && !iconAfter" :class="icon" class="icon-left" ></div>
         <slot/>
         <div v-if="icon && iconAfter" :class="icon"></div>
@@ -25,6 +25,11 @@
                 }
             }
         },
+        methods: {
+            test(){
+               this.$emit('btn-click')
+            }
+        }
     }
 </script>
 <style scoped>

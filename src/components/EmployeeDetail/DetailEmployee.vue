@@ -15,8 +15,8 @@
   </div>
 </template>
 <script>
-import GeneralInfo from "@/components/GeneralInfo";
-import ContactInfo from "@/components/ContactInfo";
+import GeneralInfo from "@/components/EmployeeDetail/GeneralInfo";
+import ContactInfo from "@/components/EmployeeDetail/ContactInfo";
 export default {
   data() {
     return {
