@@ -1,25 +1,19 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
-import PropDemo from '@/components/PropDemo'
-import Employee from '@/components/Employee'
+import Employee from '@/views/Employee'
 import Demo from '@/components/Demo'
-import AddEmployee from '@/components/AddEmployee'
-// import DropDownInput from '@/components/DropDownInput'
+import AddEmployee from '@/views/AddEmployee'
+import ListTimeSheet from '@/views/ListTimeSheet/ListTimeSheet'
 Vue.use(Router)
 
 export default new Router({
   mode: 'history',
+  // base: '/abc',
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
-    },
-    {
-      path: '/prop',
-      name: 'PropDemo',
-      component: PropDemo
+      name: 'ListTimeSheet',
+      component: ListTimeSheet
     },
     {
       path: '/employee',
@@ -36,10 +30,10 @@ export default new Router({
       name: 'AddEmployee',
       component: AddEmployee
     },
-    // {
-    //   path: '/test',
-    //   name: 'DropDownInput',
-    //   component: DropDownInput
-    // }
+    {
+      path: '/ListTimeSheet',
+      name: 'ListTimeSheet',
+      component: ListTimeSheet
+    },
   ]
 })

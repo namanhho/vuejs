@@ -12,6 +12,8 @@
         display-expr="DepartmentName"
         :placeholder="placeholder"
         @value-changed="syncTreeViewSelection($event)"
+        :onFocusOut="onBlur"
+        :read-only="(stateShowForm == 'reviewForm')? true: false"
       >
         <DxValidator v-if="validate">
           <DxRequiredRule v-if="required" message="Trường này không được phép để trống" />
@@ -23,7 +25,7 @@
             :select-by-click="true"
             data-structure="plain"
             key-expr="DepartmentId"
-            parent-id-expr="categoryId"
+            parent-id-expr="CategoryId"
             selection-mode="single"
             display-expr="DepartmentName"
             @content-ready="$event.component.selectItem(treeBoxValue)"
@@ -40,15 +42,13 @@ import DxTreeView from "devextreme-vue/tree-view";
 import DataSource from "devextreme/data/data_source";
 import DxValidationSummary from "devextreme-vue/validation-summary";
 import { DxValidator, DxRequiredRule } from "devextreme-vue/validator";
-// import { departments } from "@/data/InfoGeneralDatas.js";
 export default {
   data() {
-    debugger;
     return {
       treeDataSource: null,
-      treeBoxValue: null,
+      treeBoxValue: '',
       treeViewRefName: "tree-view",
-      inputData: null,
+      inputDatas: [],
     };
   },
   props: {
@@ -80,13 +80,30 @@ export default {
       type: String,
       default: null,
     },
+    stateShowForm: {
+      type: String,
+      default: null,
+    }
   },
-  created() {
-    debugger;
-    this.treeDataSource = this.makeDataSource();
-    this.selectDepartment();
-  },
-  mounted() {
+  watch: {
+    /**
+     * Kiểm tra sự thay đổi của dữ liệu khởi tạo ban đầu nhận được từ cha, con hứng ở prop
+     * Khi người dùng nhấn cất và thêm objectData ở cha bị khởi tạo về null, ở con phải kiểm tra
+     * thay đổi và gán lại giá trị ban đầu cho mình
+     */
+    objectData: async function(){
+      await this.getDataDepartment();
+      this.treeDataSource =  await this.makeDataSource();
+      this.selectDepartment();
+    },
+    /**
+     * Kiểm tra sự thay đổi của dữ liệu nhận được từ cha, con hứng ở prop
+     */
+    datas:async function(){
+      await this.getDataDepartment();
+      this.treeDataSource =  await this.makeDataSource();
+      await this.selectDepartment();
+    }
   },
   components: {
     DxDropDownBox,
@@ -95,10 +112,14 @@ export default {
     DxRequiredRule,
   },
   methods: {
+    /**
+     * Hàm chọn đúng phòng ban tương ứng với phòng ban của đối tượng objectData nhận được từ cha
+     * CrearedBy: HNANH(20/12/2020)
+     */
     selectDepartment() {
       debugger
       var inputValue = this.objectData[this.fieldName];
-      var inputData = this.datas.find(function (data, index) {
+      var inputData = this.inputDatas.find(function (data, index) {
         return (data["DepartmentName"] == inputValue);
       });
       if (inputData) {
@@ -138,17 +159,28 @@ export default {
      * CrearedBy: HNANH(20/12/2020)
      */
     treeView_itemSelectionChanged(e) {
-      //  debugger
       this.treeBoxValue = e.component.getSelectedNodeKeys();
-      // this.$emit("getValue", e.itemData.name);
       var fieldName = this.fieldName;
       this.objectData[fieldName] = e.itemData.DepartmentName;
+      this.objectData['DepartmentId'] = e.itemData.DepartmentId;
       this.$emit("getValue", this.objectData);
     },
+    getDataDepartment(){
+      this.inputDatas= this.datas;
+    },
+    /**
+     * Xử lý sự kiện blur, chuẩn bị cho việc validate bắt buộc nhập
+     */
+    onBlur(){
+      if (this.treeBoxValue == ''){
+        this.treeBoxValue = null;
+      }
+    }
   },
 };
 </script>
 <style>
+/* Css ghi đè lên css của thư viện */
 .dx-treeview-item.dx-state-hover {
   background-color: #e7f4ff !important;
 }

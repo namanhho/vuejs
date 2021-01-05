@@ -1,6 +1,8 @@
 <template>
   <div class="dx-field">
-    <div class="dx-field-label">{{ label }}<span v-if="required" style="color: red;">(*)</span></div>
+    <div class="dx-field-label">
+      {{ label }}<span v-if="required" style="color: red">(*)</span>
+    </div>
     <div class="dx-field-value">
       <DxDropDownBox
         v-model="gridBoxValueUpdate"
@@ -10,7 +12,9 @@
         :data-source="gridDataSource"
         value-expr="PositionId"
         :placeholder="placeholder"
+        :onFocusOut="onBlur"
         @value-changed="valueChanged($event)"
+        :read-only="stateShowForm == 'reviewForm' ? true : false"
       >
         <DxValidator v-if="validate">
           <DxRequiredRule v-if="required" message="Trường này không được phép để trống" />
@@ -46,13 +50,14 @@ import {
   DxScrolling,
 } from "devextreme-vue/data-grid";
 import DataSource from "devextreme/data/data_source";
-import { locale } from 'devextreme/localization';
+import { locale } from "devextreme/localization";
 export default {
   data() {
     return {
       gridDataSource: null,
-      gridBoxValue: [3],
-      gridColumns: ["PositionCode", "PositionName", "Department"],
+      gridBoxValue: "",
+      gridColumns: ["PositionCode", "PositionName"],
+      inputDatas: [],
     };
   },
   props: {
@@ -84,11 +89,13 @@ export default {
       type: String,
       default: null,
     },
+    stateShowForm: {
+      type: String,
+      default: null,
+    },
   },
   created() {
-    this.gridDataSource = this.makeDataSource();
-    locale('vi');
-    this.selectPosition();
+    locale("vi");
   },
   components: {
     DxDropDownBox,
@@ -101,6 +108,7 @@ export default {
     DxRequiredRule,
   },
   computed: {
+    /**Cập nhật giá trị người dùng chọn */
     gridBoxValueUpdate: {
       get: function () {
         return this.gridBoxValue;
@@ -110,39 +118,94 @@ export default {
       },
     },
   },
-  methods: {
-    selectPosition(){
-      var positionName= this.objectData[this.fieldName];
-      var position= this.datas.find(function(data, index){
-        return data.PositionName == positionName;
-      })
-      if(position) this.gridBoxValue = position.PositionId;
-      else this.gridBoxValue = null;
+  watch: {
+    /**
+     * Kiểm tra sự thay đổi của dữ liệu khởi tạo ban đầu nhận được từ cha, con hứng ở prop
+     * Khi người dùng nhấn cất và thêm objectData ở cha bị khởi tạo về null, ở con phải kiểm tra
+     * thay đổi và gán lại giá trị ban đầu cho mình
+     */
+    objectData: async function () {
+      await this.getDataPosition();
+      this.gridDataSource = await this.makeDataSource();
+      await this.selectPosition();
     },
+    //Xử lý khi dữ liệu datas hứng được ở prop được chuyền từ cha xuống con có sự thay đổi
+    datas: async function () {
+      await this.getDataPosition();
+      this.gridDataSource = await this.makeDataSource();
+      await this.selectPosition();
+    },
+  },
+  methods: {
+    /**
+     * Hàm chọn đúng position tương ứng trong đối tượng objectData nhận được từ cha
+     * CreatedBy: HNANH(24/12/2020)
+     */
+    selectPosition() {
+      // var positionName = this.objectData[this.fieldName];
+      // var position = this.inputDatas.find(function (data, index) {
+      //   return data.PositionName == positionName;
+      // });
+      // if (position) this.gridBoxValue = position.PositionId;
+      // else this.gridBoxValue = "";
+
+      var me= this;
+      var positionId = this.objectData[this.fieldName];
+      var position = this.inputDatas.find(function (data, index) {
+        return data[me.fieldName] == positionId;
+      });
+      if (position) this.gridBoxValue = position[me.fieldName];
+      else this.gridBoxValue = "";
+    },
+    /**
+     * Hàm của thư viện để thực hiện đổ dữ liệu vào hộp input
+     */
     makeDataSource() {
       return new DataSource({
-        store: this.datas,
+        store: this.inputDatas,
         map: function (item) {
-          item.key = item['PositionId'];
+          item.key = item["PositionId"];
           return item;
         },
       });
     },
+    /**
+     * Hàm để cập nhật item được chọn mới và gửi emit objectData chưa nội dung thay đổi cho cha
+     */
     itemSelectionChanged(e) {
       debugger;
-      this.gridBoxValue = [e.selectedRowKeys[0]['PositionId']];
+      this.gridBoxValue = [e.selectedRowKeys[0][this.fieldName]];
       // this.$emit("getValue", e.currentSelectedRowKeys[0].PositionName);
-      var fieldName = this.fieldName;
-      this.objectData[fieldName] = e.currentSelectedRowKeys[0].PositionName;
+      // var fieldName = this.fieldName;
+      // this.objectData[fieldName] = e.currentSelectedRowKeys[0].PositionName;
+      this.objectData["PositionId"] = e.currentSelectedRowKeys[0].PositionId;
       this.$emit("getValue", this.objectData);
     },
-    gridBoxDisplayExpr(item) {
-      // debugger;
-      return item && `${item.PositionName} <${item.Department}>`;
-    },
+    /**
+     * Hàm xử lý khi có thay đổi giá trị nội dung, và tiến hành gửi emit objectData cho cha
+     * CreatedBy: HNANH(24/12/2020)
+     */
     valueChanged(e){
-      // debugger
-    }
+      debugger
+      // var fieldName = this.fieldName;
+      // this.objectData[fieldName] = e.value[0];
+      // // this.objectData["PositionId"] = e.currentSelectedRowKeys[0].PositionId;
+      // this.$emit("getValue", this.objectData);
+    },
+    /**Hàm để trưng bày giá trị được chọn */
+    gridBoxDisplayExpr(item) {
+      return item && `${item.PositionName}`;
+    },
+    /**Hàm để gán dữ liệu nhận được từ cha  */
+    async getDataPosition() {
+      this.inputDatas = this.datas;
+    },
+    /**Hàm xử lý sự kiện blur, chuẩn bị cho quá trình validate dữ liệu bắt buộc nhập */
+    onBlur() {
+      if (this.gridBoxValue == "") {
+        this.gridBoxValue = null;
+      }
+    },
   },
 };
 </script>

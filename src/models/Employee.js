@@ -1,5 +1,5 @@
 export const employeeData={
-    EmployeeId: null,
+    // EmployeeId: null,
     EmployeeImage: null,
     EmployeeCode: null,
     FirstName: null,

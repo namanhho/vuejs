@@ -6,8 +6,10 @@
         :items="datas"
         style="height: 32px"
         :placeholder="placeholder"
-        :value="objectData[fieldName]"
+        :value="valueSelectDefault"
         @selection-changed="valueChanged($event)"
+        :read-only="(stateShowForm == 'reviewForm')? true: false"
+        :onFocusOut="onBlur"
       >
         <DxValidator v-if="validate">
           <DxRequiredRule v-if="required" message="Address is required" />
@@ -22,7 +24,9 @@ import DxValidationSummary from "devextreme-vue/validation-summary";
 import { DxValidator, DxRequiredRule } from "devextreme-vue/validator";
 export default {
   data() {
-    return {};
+    return {
+      valueSelectDefault: (this.objectData[this.fieldName])? this.objectData[this.fieldName]:this.datas[0],
+    };
   },
   components: {
     DxSelectBox,
@@ -58,20 +62,35 @@ export default {
       type: String,
       default: null,
     },
+    stateShowForm: {
+      type: String,
+      default: null,
+    },
+  },
+  watch: {
+    objectData: function () {
+      this.valueSelectDefault= (this.objectData[this.fieldName])? this.objectData[this.fieldName]:this.datas[0];
+    }
   },
   methods: {
+    onBlur(e){
+    },
+    /**
+     * Hàm xử lý sự kiện khi nội dung input thay đổi
+     */
     valueChanged(e) {
-      debugger;
-      // this.$emit("getValue", e.selectedItem);
-      // debugger
       var fieldName = this.fieldName;
       this.objectData[fieldName] = e.selectedItem;
+
+      this.valueSelectDefault = e.selectedItem;
+      //gửi emit chứa nội dung thay đổi đã được thêm vào đối tượng objectData- được gửi xuống từ cha
       this.$emit("getValue", this.objectData);
     },
   },
 };
 </script>
 <style>
+/* Css ghi đè lên css của thư viện */
 .dx-list:not(.dx-list-select-decorator-enabled) .dx-list-item.dx-state-hover {
   background-color: #e7f4ff !important;
 }

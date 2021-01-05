@@ -1,10 +1,42 @@
-.icon-add{
-    background-image: url("~@/assets/icons/add.svg");
+// .icon-add{
+//     background-image: url("~@/assets/icons/add.svg");
+//     background-repeat: no-repeat;
+//     background-position: center;
+//     background-size: 16px 16px;
+//     padding-left: 4px;
+//     margin-right: 8px;
+//     height: 16px;
+//     width: 16px;
+// }
+.icon-skype{
+    height: 16px;
+    width: 16px;
+    background-image: url("~@/assets/icons/icon-skype.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: 16px 16px;
-    padding-left: 4px;
-    margin-right: 8px;
+}
+.icon-facebook{
     height: 16px;
     width: 16px;
+    background-image: url("~@/assets/icons/icon-facebook.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 16px 16px;
+}
+.icon-zalo{
+    height: 16px;
+    width: 16px;
+    background-image: url("~@/assets/icons/icon-zalo.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 16px 16px;
+}
+.icon-msn{
+    height: 16px;
+    width: 16px;
+    background-image: url("~@/assets/icons/icon-msn.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 16px 16px;
 }

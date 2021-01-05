@@ -1,5 +1,5 @@
 var APIConfig = {
-    development: 'http://localhost:51261/api/v1',
+    development: 'http://localhost:51262/api/v1',
     production: 'local:8081'
 }
 

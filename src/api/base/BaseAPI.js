@@ -16,7 +16,14 @@ export default class BaseAPI {
      * @param {*} payload 
      */
     paging(payload) {
-        return BaseAPIConfig.post(`${this.controler}/paging`, payload);
+        return BaseAPIConfig.get(`${this.controler}/paging`, { params: payload });
+    }
+    /**
+     * Hàm thêm mới dữ liệu
+     * @param {*} body 
+     */
+    post(body){
+        return BaseAPIConfig.post(`${this.controler}`, body);
     }
     /**
      * Hàm cập nhật dữ liệu
@@ -24,14 +31,14 @@ export default class BaseAPI {
      * @param {*} body 
      */
     update(id, body) {
-        return BaseAPIConfig.update(`${this.controler}/update/${id}`, body);
+        return BaseAPIConfig.put(`${this.controler}/${id}`, body);
     }
     /**
      * Hàm xóa bản ghi
      * @param {*} id 
      */
     delete(id) {
-        return BaseAPIConfig.delete(`${this.controler}/delete/${id}`);
+        return BaseAPIConfig.delete(`${this.controler}/${id}`);
     }
 
     getById(id) {

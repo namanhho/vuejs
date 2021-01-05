@@ -7,11 +7,11 @@
         v-model="currentValue"
         width="100%"
         @value-changed="valueChanged()"
+        :read-only="(stateShowForm == 'reviewForm')? true: false"
       >
       </DxDateBox>
       
     </div>
-    <!-- <div>{{currentValue}}</div> -->
   </div>
 </template>
 <script>
@@ -28,16 +28,20 @@ export default {
     };
   },
   created() {
+    //Set locale để chuyển về tiếng việt
     locale(this.locale);
-    debugger
-    // document.location.reload();
+  },
+  watch: {
+    objectData: function () {
+      this.currentValue= (this.objectData[this.fieldName]) ? this.objectData[this.fieldName]: new Date();
+    }
   },
   methods: {
+    /**Hàm xử lý khi dữ liệu input có sự thay đổi */
     valueChanged() {
-      debugger;
-      // this.$emit("getValue", this.currentValue);
       var fieldName = this.fieldName;
       this.objectData[fieldName] = this.currentValue;
+      //gửi emit objectData đã được thêm dữ kiệu thay đổi
       this.$emit("getValue", this.objectData);
     },
   },
@@ -51,6 +55,10 @@ export default {
       default: null,
     },
     fieldName: {
+      type: String,
+      default: null,
+    },
+    stateShowForm: {
       type: String,
       default: null,
     },

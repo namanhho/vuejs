@@ -1,6 +1,6 @@
 <template>
   <div id="">
-    <img alt="Vue logo" src="@/assets/logo.png" width="25%" />
+    <img alt="Vue logo" src="@/assets/img/AvatarDefault.png" width="25%" />
     <!-- <HelloWorld msg="Hello Vue Js in CodeSandbox!" /> -->
     <div v-if="state === 'loading'">Loading...</div>
     <div v-else-if="state === 'error'">Error</div>
