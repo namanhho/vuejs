@@ -47,7 +47,7 @@
 </template>
 <script>
 import VueResizable from "vue-resizable";
-import MSButton from "@/components/Common/MSButton";
+import MSButton from "@/components/Common/MSButton.vue";
 export default {
   data() {
     return {
