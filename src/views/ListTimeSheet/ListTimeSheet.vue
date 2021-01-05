@@ -282,10 +282,10 @@
   </div>
 </template>
 <script>
-import Header from "@/layout/Header";
-import NavBar from "@/layout/NavBar";
-import TitleTable from "@/layout/TitleTable";
-import InputSearchBox from "@/components/InputBox/InputSearchBox";
+import Header from "@/layout/Header.vue";
+import NavBar from "@/layout/NavBar.vue";
+import TitleTable from "@/layout/TitleTable.vue";
+import InputSearchBox from "@/components/InputBox/InputSearchBox.vue";
 import { DataTableTimeSheet } from "@/data/DataTableTimeSheet.js";
 import {
   TimeSheetTableName,
@@ -293,7 +293,7 @@ import {
   TimeManagement,
 } from "@/data/DataFilterTable.js";
 import VueResizable from "vue-resizable";
-import ListTableDetail from "@/views/ListTimeSheet/ListTableDetail";
+import ListTableDetail from "@/views/ListTimeSheet/ListTableDetail.vue";
 import { DataButtonFilterTable } from "@/data/DataFilterTable.js";
 import EventBus from "@/bus/EventBus";
 export default {

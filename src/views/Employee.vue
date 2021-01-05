@@ -163,17 +163,17 @@
 </template>
 <script>
 import VueResizable from "vue-resizable";
-import Header from "@/layout/Header";
-import NavBar from "@/layout/NavBar";
-import AddEmployee from "@/views/AddEmployee";
-import TitleTable from "@/layout/TitleTable";
-import MSButton from "@/components/Common/MSButton";
-import DetailEmployee from "@/views/EmployeeDetail/DetailEmployee";
-import Loading from "@/components/Common/Loading";
+import Header from "@/layout/Header.vue";
+import NavBar from "@/layout/NavBar.vue";
+import AddEmployee from "@/views/AddEmployee.vue";
+import TitleTable from "@/layout/TitleTable.vue";
+import MSButton from "@/components/Common/MSButton.vue";
+import DetailEmployee from "@/views/EmployeeDetail/DetailEmployee.vue";
+import Loading from "@/components/Common/Loading.vue";
 import EventBus from "@/bus/EventBus";
 import { employeeData } from "@/models/Employee.js";
 import EmployeesAPI from "@/api/components/employees/EmployeesAPI.js";
-import PopUpWarning from "@/components/Common/PopUpWarning";
+import PopUpWarning from "@/components/Common/PopUpWarning.vue";
 export default {
   data() {
     return {

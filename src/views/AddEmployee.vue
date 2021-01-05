@@ -722,20 +722,20 @@
   </div>
 </template>
 <script>
-import MSButton from "@/components/Common/MSButton";
-import DropDownInput from "@/components/InputBox/DropDownInput";
-import DropDownInputDataGrid from "@/components/InputBox/DropDownInputDataGrid";
-import CalendarInput from "@/components/InputBox/CalendarInput";
-import SelectInput from "@/components/InputBox/SelectInput";
-import NumberInput from "@/components/InputBox/NumberInput";
-import TextInput from "@/components/InputBox/TextInput";
-import TextAreaInput from "@/components/InputBox/TextAreaInput";
+import MSButton from "@/components/Common/MSButton.vue";
+import DropDownInput from "@/components/InputBox/DropDownInput.vue";
+import DropDownInputDataGrid from "@/components/InputBox/DropDownInputDataGrid.vue";
+import CalendarInput from "@/components/InputBox/CalendarInput.vue";
+import SelectInput from "@/components/InputBox/SelectInput.vue";
+import NumberInput from "@/components/InputBox/NumberInput.vue";
+import TextInput from "@/components/InputBox/TextInput.vue";
+import TextAreaInput from "@/components/InputBox/TextAreaInput.vue";
 import DxValidationSummary from "devextreme-vue/validation-summary";
 import DxButton from "devextreme-vue/button";
 import EmployeesAPI from "@/api/components/employees/EmployeesAPI.js";
 import DepartmentsAPI from "@/api/components/departments/DepartmentsAPI.js";
 import PositionsAPI from "@/api/components/positions/PositionsAPI.js";
-import PopUpWarning from "@/components/Common/PopUpWarning";
+import PopUpWarning from "@/components/Common/PopUpWarning.vue";
 import {
   genders,
   nations,

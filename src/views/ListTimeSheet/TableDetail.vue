@@ -166,7 +166,7 @@
   </div>
 </template>
 <script>
-import InputSearchBox from "@/components/InputBox/InputSearchBox";
+import InputSearchBox from "@/components/InputBox/InputSearchBox.vue";
 import { numberTimeSheet } from "@/data/DataFilterTable.js";
 // import Table from "@/components/Table/Table"
 import { employees } from "@/data/DataTableTimeSheet.js";

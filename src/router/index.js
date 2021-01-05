@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Employee from '@/views/Employee'
-import Demo from '@/components/Demo'
-import AddEmployee from '@/views/AddEmployee'
-import ListTimeSheet from '@/views/ListTimeSheet/ListTimeSheet'
+import Employee from '@/views/Employee.vue'
+import Demo from '@/components/Demo.vue'
+import AddEmployee from '@/views/AddEmployee.vue'
+import ListTimeSheet from '@/views/ListTimeSheet/ListTimeSheet.vue'
 Vue.use(Router)
 
 export default new Router({

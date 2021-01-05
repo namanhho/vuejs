@@ -12,8 +12,8 @@
   </div>
 </template>
 <script>
-import GeneralInfo from "@/views/EmployeeDetail/GeneralInfo";
-import ContactInfo from "@/views/EmployeeDetail/ContactInfo";
+import GeneralInfo from "@/views/EmployeeDetail/GeneralInfo.vue";
+import ContactInfo from "@/views/EmployeeDetail/ContactInfo.vue";
 export default {
   data() {
     return {
